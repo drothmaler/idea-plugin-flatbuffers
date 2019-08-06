@@ -1,0 +1,69 @@
+<idea-plugin url="https://github.com/pdehn/idea-plugin-flatbuffers">
+    <id>com.pdehaan.idea-plugin-flatbuffers</id>
+    <name>FlatBuffers Support</name>
+    <version>0.0.2</version>
+    <vendor email="me@pdehaan.com" url="http://pdehaan.com">Patrick DeHaan</vendor>
+
+    <description>
+        <![CDATA[
+        <p>Provides support for <a href="">Google FlatBuffers</a> IDLs.</p>
+        ]]>
+    </description>
+
+    <change-notes>
+        <![CDATA[
+        <h3>0.0.2</h3>
+        <p>
+            Make it compatible with the latest JetBrains Tools
+        </p>
+        <ul>
+            <li>Update</li>
+        </ul>
+        <h3>0.0.1</h3>
+        <p>
+            Documentation on IDL schema language seems to be a bit outdated, so most work initially is just on matching
+            up to what's actually implemented by flatc.
+        </p>
+        <ul>
+            <li>Initial version, targeting Flatbuffers 1.4.0</li>
+            <li>Syntax highlighting</li>
+        </ul>
+        ]]>
+    </change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="183"/>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <fileTypeFactory implementation="com.pdehaan.flatbuffers.FlatBuffersFileTypeFactory"/>
+        <lang.parserDefinition
+                language="flatbuffers"
+                implementationClass="com.pdehaan.flatbuffers.FlatBuffersParserDefinition"/>
+        <lang.syntaxHighlighterFactory
+                language="flatbuffers"
+                implementationClass="com.pdehaan.flatbuffers.FlatBuffersSyntaxHighlighterFactory"/>
+        <annotator
+                language="flatbuffers"
+                implementationClass="com.pdehaan.flatbuffers.FlatBuffersAnnotator"/>
+        <lang.braceMatcher
+                language="flatbuffers"
+                implementationClass="com.pdehaan.flatbuffers.FlatBuffersBraceMatcher"/>
+        <lang.commenter
+                language="flatbuffers"
+                implementationClass="com.pdehaan.flatbuffers.FlatBuffersCommenter"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+
+</idea-plugin>
